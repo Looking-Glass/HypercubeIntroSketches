@@ -3,9 +3,6 @@ using System.Collections;
 
 public class MoveToKeys : MonoBehaviour {
 	void Update () {
-		if (Input.GetKey(KeyCode.Space)) {
-			hover ();
-		}
 		if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) {
 			move(Vector3.right);
 		}
@@ -18,13 +15,12 @@ public class MoveToKeys : MonoBehaviour {
 		if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) {
 			move(Vector3.back);
 		}
-	}
-
-	void hover() {
-		GetComponent<Rigidbody> ().AddForce (Vector3.up * 0.5f, ForceMode.Impulse);
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			GetComponent<Rigidbody> ().AddForce (Vector3.up * 5, ForceMode.Impulse);
+		}
 	}
 
 	void move(Vector3 moveDirection) {
-		transform.position = transform.position + moveDirection / 10.0f;
+		transform.position = transform.position + moveDirection / 7.5f;
 	}
 }
